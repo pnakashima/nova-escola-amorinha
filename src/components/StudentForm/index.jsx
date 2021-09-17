@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 
 
-const StudentForm = ({submitFunc}) => {
+const StudentForm = ({ student, submitFunc }) => {
 
+    const [id, setId] = useState("")
     const [name, setName] = useState("")
     const [dob, setDob] = useState("")
     const [responsible, setResponsible] = useState("")
@@ -16,6 +17,26 @@ const StudentForm = ({submitFunc}) => {
     const [classNumber, setClassNumber] = useState("")
     const [additionalObs, setAdditionalObs] = useState("")
 
+    useEffect(() => {
+        if (student) {
+            setId(student.id)
+            setName(student.name)
+            setDob(student.dob)
+            setResponsible(student.responsible)
+            setResponsiblePhone(student.responsiblePhone)
+            setEmergency(student.emergency)
+            setEmergencyPhone(student.emergencyPhone)
+            setFoodRestriction(student.foodRestriction)
+            setRestrictionDescription(student.restrictionDescription)
+            setPhotoAuth(student.photoAuth)
+            setAuthorizedPeople(student.authorizedPeople)
+            setClassNumber(student.classNumber)
+            setAdditionalObs(student.additionalObs)
+        } 
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [])
+
+    //const idGen = () => Math.floor((1 + Math.random()) * 0x1000000).toString(16)
 
     const phoneMask = (event) => {
         let text = event.target.value
@@ -32,9 +53,19 @@ const StudentForm = ({submitFunc}) => {
         return inputValue
     }
 
+    const handleCheck = (event) => {
+        const inputValue = event.target.checked
+        let checkValue = ""
+        if (inputValue === true) {
+            checkValue = "checked"
+        }
+        return checkValue
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault()
         const student = {
+            id,
             name,
             dob,
             responsible,
@@ -48,7 +79,6 @@ const StudentForm = ({submitFunc}) => {
             classNumber,
             additionalObs
         }
-        console.log(student)
 
         submitFunc(student)
     }
@@ -62,7 +92,7 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="name"
-                    name="name"
+                    value={name}
                     onChange={(e) => setName(e.target.value)}
                 />
 
@@ -70,7 +100,7 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="date"
                     id="dob"
-                    name="dob"
+                    value={dob}
                     onChange={(e) => setDob(e.target.value)}
                 />
 
@@ -78,7 +108,7 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="responsible"
-                    name="responsible"
+                    value={responsible}
                     onChange={(e) => setResponsible(e.target.value)}
                 />
 
@@ -86,13 +116,12 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="responsiblePhone"
-                    name="responsiblePhone"
+                    value={responsiblePhone}
                     onChange={(e) => setResponsiblePhone(phoneMask(e))}
                 />
 
                 <label htmlFor="emergency">Contato de emergência:</label>
                 <select
-                    name="emergency"
                     value={emergency}
                     onChange={(e) => setEmergency(e.target.value)}
                 >
@@ -107,7 +136,7 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="emergencyPhone"
-                    name="emergencyPhone"
+                    value={emergencyPhone}
                     onChange={(e) => setEmergencyPhone(phoneMask(e))}
                 />
 
@@ -115,8 +144,8 @@ const StudentForm = ({submitFunc}) => {
                     <input
                         type="checkbox"
                         id="foodRestriction"
-                        name="foodRestriction"
-                        onChange={(e) => setFoodRestriction(e.target.value)}
+                        checked={foodRestriction}
+                        onChange={(e) => setFoodRestriction(handleCheck(e))}
                     />
                     <label htmlFor="foodRestriction">Possui restrição alimentar</label>
                 </div>
@@ -125,7 +154,7 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="restrictionDescription"
-                    name="restrictionDescription"
+                    value={restrictionDescription}
                     onChange={(e) => setRestrictionDescription(e.target.value)}
                 />
 
@@ -133,8 +162,8 @@ const StudentForm = ({submitFunc}) => {
                     <input
                         type="checkbox"
                         id="photoAuth"
-                        name="photoAuth"
-                        onChange={(e) => setPhotoAuth(e.target.value)}
+                        checked={photoAuth}
+                        onChange={(e) => setPhotoAuth(handleCheck(e))}
                     />
                     <label htmlFor="photoAuth">Autorização de fotos e vídeos da criança</label>
                 </div>
@@ -143,13 +172,12 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="authorizedPeople"
-                    name="authorizedPeople"
+                    value={authorizedPeople}
                     onChange={(e) => setAuthorizedPeople(e.target.value)}
                 />
 
                 <label htmlFor="classNumber">Turma:</label>
                 <select
-                    name="classNumber"
                     value={classNumber}
                     onChange={(e) => setClassNumber(e.target.value)}
                 >
@@ -164,7 +192,7 @@ const StudentForm = ({submitFunc}) => {
                 <input
                     type="text"
                     id="additionalObs"
-                    name="additionalObs"
+                    value={additionalObs}
                     onChange={(e) => setAdditionalObs(e.target.value)}
                 />
 
