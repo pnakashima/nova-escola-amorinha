@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 
-const StudentForm = () => {
+const StudentForm = ({submitFunc}) => {
 
     const [name, setName] = useState("")
     const [dob, setDob] = useState("")
@@ -49,6 +49,8 @@ const StudentForm = () => {
             additionalObs
         }
         console.log(student)
+
+        submitFunc(student)
     }
 
     return (
@@ -95,10 +97,10 @@ const StudentForm = () => {
                     onChange={(e) => setEmergency(e.target.value)}
                 >
                     <option value="none"></option>
-                    <option value="pais">Pais</option>
-                    <option value="tios">Tios</option>
-                    <option value="avós">Avós</option>
-                    <option value="padrinhos">Padrinhos</option>
+                    <option value="Pais">Pais</option>
+                    <option value="Tios">Tios</option>
+                    <option value="Avós">Avós</option>
+                    <option value="Padrinhos">Padrinhos</option>
                 </select>
 
                 <label htmlFor="emergencyPhone">Telefone para emergências:</label>
