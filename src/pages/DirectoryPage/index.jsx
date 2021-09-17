@@ -33,7 +33,8 @@ const DirectoryPage = () => {
     const deleteStudent = async (id) => {
         console.log("Delete", id)
         const response = await api.delete(`/students/${id}`)
-        console.log(response.status)
+        console.log(response)
+        history.go(0)
     }
 
     const search = (event) => {

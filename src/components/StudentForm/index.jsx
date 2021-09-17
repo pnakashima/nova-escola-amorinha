@@ -32,7 +32,7 @@ const StudentForm = ({ student, submitFunc }) => {
             setAuthorizedPeople(student.authorizedPeople)
             setClassNumber(student.classNumber)
             setAdditionalObs(student.additionalObs)
-        } 
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
@@ -149,7 +149,7 @@ const StudentForm = ({ student, submitFunc }) => {
                     />
                     <label htmlFor="foodRestriction">Possui restrição alimentar</label>
                 </div>
-
+                {foodRestriction && <>
                 <label htmlFor="restrictionDescription">Descrição das restrições alimentares:</label>
                 <input
                     type="text"
@@ -157,6 +157,7 @@ const StudentForm = ({ student, submitFunc }) => {
                     value={restrictionDescription}
                     onChange={(e) => setRestrictionDescription(e.target.value)}
                 />
+                </>}
 
                 <div>
                     <input

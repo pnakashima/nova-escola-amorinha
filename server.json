@@ -33,8 +33,10 @@
       "id": 5,
       "name": "Minerva",
       "dob": "2021-09-11",
-      "emergency": "Padrinhos",
+      "emergency": "Pais",
       "emergencyPhone": "(44)44444-4444",
+      "foodRestriction": "checked",
+      "restrictionDescription": "sssss",
       "classNumber": 3
     },
     {
@@ -109,21 +111,6 @@
       "authorizedPeople": "eeeeeeeeee",
       "classNumber": "4",
       "additionalObs": "ttttttttttt",
-      "id": 13
-    },
-    {
-      "name": "aaaaaaa",
-      "dob": "2021-09-17",
-      "responsible": "rrrrrr",
-      "responsiblePhone": "(33)33333-3333",
-      "emergency": "Pais",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "checked",
-      "restrictionDescription": "aaaaaaaaaa",
-      "photoAuth": "checked",
-      "authorizedPeople": "eeeeeeeeee",
-      "classNumber": "4",
-      "additionalObs": "ttttttttttt",
       "id": 14
     },
     {
@@ -184,21 +171,6 @@
       "authorizedPeople": "eeeeeeeeee",
       "classNumber": "4",
       "additionalObs": "ttttttttttt",
-      "id": 18
-    },
-    {
-      "name": "Meu ",
-      "dob": "2021-09-14",
-      "responsible": "rrrrrr",
-      "responsiblePhone": "(33)33333-3333",
-      "emergency": "Avós",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "checked",
-      "restrictionDescription": "aaaaaaaaaa",
-      "photoAuth": "",
-      "authorizedPeople": "eeeeeeeeee",
-      "classNumber": "4",
-      "additionalObs": "ttttttttttt",
       "id": 19
     },
     {
@@ -215,21 +187,6 @@
       "authorizedPeople": "eeeeeeeeee",
       "classNumber": "2",
       "additionalObs": "xxxxxx"
-    },
-    {
-      "id": "19ed7bb",
-      "name": "aaaaaaa",
-      "dob": "2021-09-17",
-      "responsible": "",
-      "responsiblePhone": "",
-      "emergency": "Avós",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "",
-      "restrictionDescription": "",
-      "photoAuth": "",
-      "authorizedPeople": "",
-      "classNumber": "3",
-      "additionalObs": ""
     },
     {
       "id": "11ae380",
