@@ -5,6 +5,7 @@ import { useEffect, useState } from "react"
 const DirectoryPage = () => {
 
     const [students, setStudents] = useState([])
+    const [displayStudents, setDisplayStudents] = useState([])
 
     const getInfo = async () => {
         try {
@@ -12,6 +13,7 @@ const DirectoryPage = () => {
             // const info = { triggers: triggers.data, channels: channels.data, messages: messages.data }
             // dispatch(loadInfo(info))
             setStudents(students.data)
+            setDisplayStudents(students.data)
         } catch (error) {
             console.log(error)
         }
@@ -24,23 +26,22 @@ const DirectoryPage = () => {
 
     const editStudent = async (id) => {
         console.log("Edit", id)
-        const teste = {name: "Minerva", dob:"21/09/2000", classNumber: 3, emergencyPhone: "(44)44444-4444", emergency: "Padrinhos"}
+        const teste = { name: "Minerva", dob: "21/09/2000", classNumber: 3, emergencyPhone: "(44)44444-4444", emergency: "Padrinhos" }
         const response = await api.put(`/students/${id}`, teste)
         console.log(response.status)
     }
-    
+
     const deleteStudent = async (id) => {
         console.log("Delete", id)
         const response = await api.delete(`/students/${id}`)
         console.log(response.status)
     }
 
-    // const search = async (e) => {
-    //     e.preventDefault()
-    //     let query = `/messages?trigger_like=${triggerValue}&channel_like=${channelValue}&timer_like=${timerValue}`
-    //     const response = await api.get(query)
-    //     setMessages(response.data)
-    // }
+    const search = (event) => {
+        const { value } = event.target
+        const list = students.filter(student => student.name.toLowerCase().includes(value.toLowerCase()))
+        setDisplayStudents(list)
+    }
 
 
 
@@ -64,24 +65,29 @@ const DirectoryPage = () => {
     // postMessage(body)
 
     return (
-        <div className="students-list">
-            <table border="1" id="message-list-table">
-                <thead>
-                    <tr>
-                        <th>Nome</th>
-                        <th>Data de Nascimento</th>
-                        <th>Turma</th>
-                        <th>Telefone para Emergências</th>
-                        <th>Contato para Emergências</th>
-                        <th></th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {students.map((student, index) => <ListItem key={index} student={student} onEdit={editStudent} onDelete={deleteStudent} />)}
-                </tbody>
-            </table>
-        </div>
+        <>
+            <div className="students-list">
+                <input onChange={search} size="50" placeholder="Pesquisar aluno..." />
+            </div>
+            <div className="students-list">
+                <table border="1" id="message-list-table">
+                    <thead>
+                        <tr>
+                            <th>Nome</th>
+                            <th>Data de Nascimento</th>
+                            <th>Turma</th>
+                            <th>Telefone para Emergências</th>
+                            <th>Contato para Emergências</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {displayStudents.map((student, index) => <ListItem key={index} student={student} onEdit={editStudent} onDelete={deleteStudent} />)}
+                    </tbody>
+                </table>
+            </div>
+        </>
     )
 
 }
