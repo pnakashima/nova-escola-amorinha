@@ -2,7 +2,7 @@
   "students": [
     {
       "id": 1,
-      "name": "Paulo",
+      "name": "Paulooooooooo",
       "dob": "1976-08-19",
       "responsible": "Nevine",
       "responsiblePhone": "(11)11111-1111",
@@ -10,7 +10,7 @@
       "emergencyPhone": "(22)22222-2222",
       "foodRestriction": "checked",
       "restrictionDescription": "maracujá e goiaba",
-      "photoAuth": true,
+      "photoAuth": "checked",
       "authorizedPeople": "Nevine",
       "classNumber": "3",
       "additionalObs": "Nenhuma"
@@ -28,16 +28,6 @@
       "authorizedPeople": "Nevine",
       "classNumber": "1",
       "additionalObs": "Nenhuma"
-    },
-    {
-      "id": 5,
-      "name": "Minerva",
-      "dob": "2021-09-11",
-      "emergency": "Pais",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "checked",
-      "restrictionDescription": "sssss",
-      "classNumber": 3
     },
     {
       "id": 6,
@@ -129,66 +119,6 @@
       "id": 15
     },
     {
-      "name": "Meu ",
-      "dob": "2021-09-14",
-      "responsible": "rrrrrr",
-      "responsiblePhone": "(33)33333-3333",
-      "emergency": "Avós",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "checked",
-      "restrictionDescription": "aaaaaaaaaa",
-      "photoAuth": "",
-      "authorizedPeople": "eeeeeeeeee",
-      "classNumber": "4",
-      "additionalObs": "ttttttttttt",
-      "id": 16
-    },
-    {
-      "name": "Meu ",
-      "dob": "2021-09-14",
-      "responsible": "rrrrrr",
-      "responsiblePhone": "(33)33333-3333",
-      "emergency": "Avós",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "checked",
-      "restrictionDescription": "aaaaaaaaaa",
-      "photoAuth": "",
-      "authorizedPeople": "eeeeeeeeee",
-      "classNumber": "4",
-      "additionalObs": "ttttttttttt",
-      "id": 17
-    },
-    {
-      "name": "Meu ",
-      "dob": "2021-09-14",
-      "responsible": "rrrrrr",
-      "responsiblePhone": "(33)33333-3333",
-      "emergency": "Avós",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "checked",
-      "restrictionDescription": "aaaaaaaaaa",
-      "photoAuth": "",
-      "authorizedPeople": "eeeeeeeeee",
-      "classNumber": "4",
-      "additionalObs": "ttttttttttt",
-      "id": 19
-    },
-    {
-      "id": 20,
-      "name": "Meu N",
-      "dob": "2021-09-03",
-      "responsible": "rrrrrr",
-      "responsiblePhone": "(33)33333-3333",
-      "emergency": "Pais",
-      "emergencyPhone": "(44)44444-4444",
-      "foodRestriction": "",
-      "restrictionDescription": "aaaaaaaaaa",
-      "photoAuth": "checked",
-      "authorizedPeople": "eeeeeeeeee",
-      "classNumber": "2",
-      "additionalObs": "xxxxxx"
-    },
-    {
       "id": "11ae380",
       "name": "kkkkkkkkkkk",
       "dob": "2021-08-31",
@@ -219,33 +149,18 @@
       "additionalObs": ""
     },
     {
-      "id": 22,
-      "name": "aaaaaaa",
-      "dob": "2021-09-10",
-      "responsible": "",
-      "responsiblePhone": "",
-      "emergency": "",
-      "emergencyPhone": "",
-      "foodRestriction": "",
-      "restrictionDescription": "",
-      "photoAuth": "",
-      "authorizedPeople": "",
-      "classNumber": "",
-      "additionalObs": ""
-    },
-    {
       "id": 23,
       "name": "aaaaaaa",
       "dob": "2021-09-10",
       "responsible": "",
       "responsiblePhone": "",
-      "emergency": "",
-      "emergencyPhone": "",
+      "emergency": "Padrinhos",
+      "emergencyPhone": "(66)66666-6666",
       "foodRestriction": "",
       "restrictionDescription": "",
       "photoAuth": "",
       "authorizedPeople": "",
-      "classNumber": "",
+      "classNumber": "2",
       "additionalObs": ""
     }
   ]

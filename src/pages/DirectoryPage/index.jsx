@@ -2,6 +2,17 @@ import ListItem from "../../components/ListItem"
 import api from "../../services/api"
 import { useEffect, useState } from "react"
 import { useHistory } from 'react-router-dom'
+import { Box } from "@mui/system"
+import { TextField } from "@mui/material"
+import Table from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableHead from '@mui/material/TableHead';
+import TableRow from '@mui/material/TableRow';
+import Paper from '@mui/material/Paper';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const DirectoryPage = () => {
 
@@ -46,28 +57,52 @@ const DirectoryPage = () => {
 
     return (
         <>
-            <div className="students-list">
-                <input onChange={search} size="50" placeholder="Pesquisar aluno..." />
-            </div>
-            <div className="students-list">
-                <table border="1" id="message-list-table">
-                    <thead>
-                        <tr>
-                            <th>Nome</th>
-                            <th>Data de Nascimento</th>
-                            <th>Turma</th>
-                            <th>Telefone para Emergências</th>
-                            <th>Contato para Emergências</th>
-                            <th>ID</th>
-                            <th></th>
-                            <th></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {displayStudents.map((student, index) => <ListItem key={index} student={student} onEdit={editStudent} onDelete={deleteStudent} />)}
-                    </tbody>
-                </table>
-            </div>
+            <Box m={4} sx={{ display: 'flex', flexDirection: 'column', mx: "auto", justifyContent: 'center', width: '80%', color: 'text-primary' }}>
+                <TextField
+                    fullWidth
+                    variant="outlined"
+                    label="Pesquisar aluno..."
+                    id="search"
+                    onChange={search}
+                />
+                <br />
+
+                <TableContainer component={Paper}>
+                    <Table sx={{ minWidth: 650 }} aria-label="simple table">
+                        <TableHead>
+                            <TableRow>
+                                <TableCell>Nome</TableCell>
+                                <TableCell>Data de Nascimento</TableCell>
+                                <TableCell>Turma</TableCell>
+                                <TableCell>Telefone para Emergências</TableCell>
+                                <TableCell>Contato para Emergências</TableCell>
+                                <TableCell>ID</TableCell>
+                                <TableCell>Editar</TableCell>
+                                <TableCell>Excluir</TableCell>
+                            </TableRow>
+                        </TableHead>
+                        <TableBody>
+                            {displayStudents.map((student, index) => (
+                                <TableRow
+                                    key={index}
+                                    sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+                                >
+                                    <TableCell component="th" scope="row">
+                                        {student.name}
+                                    </TableCell>
+                                    <TableCell>{student.dob}</TableCell>
+                                    <TableCell>{student.classNumber}</TableCell>
+                                    <TableCell>{student.emergencyPhone}</TableCell>
+                                    <TableCell>{student.emergency}</TableCell>
+                                    <TableCell>{student.id}</TableCell>
+                                    <TableCell><EditIcon onClick={() => editStudent(student.id)} /></TableCell>
+                                    <TableCell><DeleteIcon onClick={() => deleteStudent(student.id)} /></TableCell>
+                                </TableRow>
+                            ))}
+                        </TableBody>
+                    </Table>
+                </TableContainer>
+            </Box>
         </>
     )
 

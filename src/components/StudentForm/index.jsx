@@ -1,4 +1,12 @@
 import { useEffect, useState } from "react"
+import { Button, Checkbox, FormGroup } from "@mui/material"
+import { TextField } from "@mui/material"
+import { Box } from "@mui/system"
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import FormControlLabel from '@mui/material/FormControlLabel';
 
 
 const StudentForm = ({ student, submitFunc }) => {
@@ -84,122 +92,166 @@ const StudentForm = ({ student, submitFunc }) => {
     }
 
     return (
-
-        <form onSubmit={handleSubmit}>
-            <div className="student-form">
-
-                <label htmlFor="name">Nome:</label>
-                <input
-                    type="text"
-                    id="name"
-                    value={name}
-                    onChange={(e) => setName(e.target.value)}
-                />
-
-                <label htmlFor="dob">Data de nascimento:</label>
-                <input
-                    type="date"
-                    id="dob"
-                    value={dob}
-                    onChange={(e) => setDob(e.target.value)}
-                />
-
-                <label htmlFor="responsible">Responsável:</label>
-                <input
-                    type="text"
-                    id="responsible"
-                    value={responsible}
-                    onChange={(e) => setResponsible(e.target.value)}
-                />
-
-                <label htmlFor="responsiblePhone">Telefone do responsável:</label>
-                <input
-                    type="text"
-                    id="responsiblePhone"
-                    value={responsiblePhone}
-                    onChange={(e) => setResponsiblePhone(phoneMask(e))}
-                />
-
-                <label htmlFor="emergency">Contato de emergência:</label>
-                <select
-                    value={emergency}
-                    onChange={(e) => setEmergency(e.target.value)}
-                >
-                    <option value="none"></option>
-                    <option value="Pais">Pais</option>
-                    <option value="Tios">Tios</option>
-                    <option value="Avós">Avós</option>
-                    <option value="Padrinhos">Padrinhos</option>
-                </select>
-
-                <label htmlFor="emergencyPhone">Telefone para emergências:</label>
-                <input
-                    type="text"
-                    id="emergencyPhone"
-                    value={emergencyPhone}
-                    onChange={(e) => setEmergencyPhone(phoneMask(e))}
-                />
-
-                <div>
-                    <input
-                        type="checkbox"
-                        id="foodRestriction"
-                        checked={foodRestriction}
-                        onChange={(e) => setFoodRestriction(handleCheck(e))}
+        <div className="student-form">
+            <h1>Cadastro de Alunos</h1>
+            <form onSubmit={handleSubmit}>
+                <Box mb={4} sx={{ display: 'flex', flexDirection: 'column', mx: "auto", justifyContent: 'center', width: '100%', color: 'text-primary' }}>
+                    <TextField
+                        required
+                        fullWidth
+                        variant="outlined"
+                        label="Nome"
+                        id="name"
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
                     />
-                    <label htmlFor="foodRestriction">Possui restrição alimentar</label>
-                </div>
-                {foodRestriction && <>
-                <label htmlFor="restrictionDescription">Descrição das restrições alimentares:</label>
-                <input
-                    type="text"
-                    id="restrictionDescription"
-                    value={restrictionDescription}
-                    onChange={(e) => setRestrictionDescription(e.target.value)}
-                />
-                </>}
+                    <br />
 
-                <div>
-                    <input
-                        type="checkbox"
-                        id="photoAuth"
-                        checked={photoAuth}
-                        onChange={(e) => setPhotoAuth(handleCheck(e))}
+                    <TextField
+                        required
+                        fullWidth
+                        variant="outlined"
+                        InputLabelProps={{ shrink: true, required: true }}
+                        label="Data de nascimento"
+                        type="date"
+                        id="dob"
+                        value={dob}
+                        onChange={(e) => setDob(e.target.value)}
                     />
-                    <label htmlFor="photoAuth">Autorização de fotos e vídeos da criança</label>
-                </div>
+                    <br />
 
-                <label htmlFor="authorizedPeople">Lista de autorizados para buscar a criança:</label>
-                <input
-                    type="text"
-                    id="authorizedPeople"
-                    value={authorizedPeople}
-                    onChange={(e) => setAuthorizedPeople(e.target.value)}
-                />
+                    <TextField
+                        fullWidth
+                        variant="outlined"
+                        label="Responsável"
+                        id="responsible"
+                        value={responsible}
+                        onChange={(e) => setResponsible(e.target.value)}
+                    />
+                    <br />
 
-                <label htmlFor="classNumber">Turma:</label>
-                <select
-                    value={classNumber}
-                    onChange={(e) => setClassNumber(e.target.value)}
-                >
-                    <option value="none"></option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                </select>
+                    <TextField
+                        fullWidth
+                        variant="outlined"
+                        label="Telefone do responsável"
+                        id="responsiblePhone"
+                        value={responsiblePhone}
+                        onChange={(e) => setResponsiblePhone(phoneMask(e))}
+                    />
+                    <br />
 
-                <label htmlFor="additionalObs">Observações adicionais:</label>
-                <input
-                    type="text"
-                    id="additionalObs"
-                    value={additionalObs}
-                    onChange={(e) => setAdditionalObs(e.target.value)}
-                />
+                    <FormControl fullWidth>
+                        <InputLabel required id="select-emergency">Contato de Emergência</InputLabel>
+                        <Select
+                            fullwidth
+                            labelId="select-emergency"
+                            id="emergency"
+                            value={emergency}
+                            label="Selecione uma opção"
+                            onChange={(e) => setEmergency(e.target.value)}
+                        >
+                            <MenuItem value={"Pais"}>Pais</MenuItem>
+                            <MenuItem value={"Tios"}>Tios</MenuItem>
+                            <MenuItem value={"Avós"}>Avós</MenuItem>
+                            <MenuItem value={"Padrinhos"}>Padrinhos</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <br />
 
-                <button type="submit">Cadastrar</button>
-            </div>
-        </form>
+                    <TextField
+                        required
+                        fullWidth
+                        variant="outlined"
+                        label="Telefone para emergências"
+                        id="emergencyPhone"
+                        value={emergencyPhone}
+                        onChange={(e) => setEmergencyPhone(phoneMask(e))}
+                    />
+                    <br />
+
+                    <FormGroup>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    id="foodRestriction"
+                                    checked={foodRestriction}
+                                    onChange={(e) => setFoodRestriction(handleCheck(e))}
+                                    //onChange={(e) => setFoodRestriction(e.target.value)}
+                                />
+                            }
+                            label="Possui restrição alimentar"
+                        />
+                    </FormGroup>
+
+                    {foodRestriction && <>
+                        <TextField
+                            fullWidth
+                            variant="outlined"
+                            label="Descrição das restrições alimentares:"
+                            id="restrictionDescription"
+                            value={restrictionDescription}
+                            onChange={(e) => setRestrictionDescription(e.target.value)}
+                        />
+                    </>}
+                    <br />
+
+                    <FormGroup>
+                        <FormControlLabel
+                            control={
+                                <Checkbox
+                                    id="photoAuth"
+                                    checked={photoAuth}
+                                    onChange={(e) => setPhotoAuth(handleCheck(e))}
+                                    //onChange={(e) => setPhotoAuth(e.target.value)}
+                                />
+                            }
+                            label="Autorização de fotos e vídeos da criança"
+                        />
+                    </FormGroup>
+                    <br />
+
+                    <TextField
+                        fullWidth
+                        variant="outlined"
+                        label="Lista de autorizados para buscar a criança:"
+                        id="authorizedPeople"
+                        value={authorizedPeople}
+                        onChange={(e) => setAuthorizedPeople(e.target.value)}
+                    />
+                    <br />
+
+                    <FormControl fullWidth>
+                        <InputLabel required id="select-classNumber">Turma</InputLabel>
+                        <Select
+                            fullwidth
+                            labelId="select-classNumber"
+                            id="classNumber"
+                            value={classNumber}
+                            label="Selecione uma opção"
+                            onChange={(e) => setClassNumber(e.target.value)}
+                        >
+                            <MenuItem value={"1"}>1</MenuItem>
+                            <MenuItem value={"2"}>2</MenuItem>
+                            <MenuItem value={"3"}>3</MenuItem>
+                            <MenuItem value={"4"}>4</MenuItem>
+                        </Select>
+                    </FormControl>
+                    <br />
+
+                    <TextField
+                        fullWidth
+                        variant="outlined"
+                        label="Observações adicionais"
+                        id="additionalObs"
+                        value={additionalObs}
+                        onChange={(e) => setAdditionalObs(e.target.value)}
+                    />
+                    <br />
+
+                    <Button type="submit" style={{ backgroundColor: '#0b1a72', color: '#FFF' }}>Cadastrar</Button>
+                </Box>
+            </form>
+        </div>
     )
 }
 

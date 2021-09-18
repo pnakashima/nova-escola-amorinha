@@ -15,15 +15,14 @@
   font-size: 24px;
   color: #FFF;
   padding: 0px 20px;
-}
+} 
 
-span {
+.header-link {
   padding: 20px;
   text-decoration: none;
   color: #FFF;
   cursor: pointer;
-}
-
+} 
 
 .students-list {
   display: flex;
@@ -33,11 +32,14 @@ span {
 }
 
 
-
 .student-form {
   display: flex;
   flex-direction: column;
-  width: 50%;
+  width: 80%;
   margin: auto;
+  color: #0b1a72;
 }
 
+span {
+  color: black
+}
